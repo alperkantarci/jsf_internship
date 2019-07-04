@@ -35,6 +35,6 @@ INSERT INTO Car VALUES(5,'Innova','Maroon',39.97,'France');
 INSERT INTO Car VALUES(6,'FiatPalio','Silver',35.45,'Italy');
 INSERT INTO Car VALUES(7,'Qualis','Red',23.35,'Paris');
 
-// Test new data
+/* Test new data */
 INSERT INTO Car VALUES(8,'Sahin','White',40,'Turkey');
 ```
