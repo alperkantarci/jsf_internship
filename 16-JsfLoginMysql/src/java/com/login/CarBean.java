@@ -31,32 +31,39 @@ public class CarBean {
     public List<Car> getCars() throws ClassNotFoundException, SQLException {
 
         Connection connect = null;
-        connect = DataConnect.getConnection();
 
-        List<Car> cars = new ArrayList<>();
-        PreparedStatement pstmt = connect
-                .prepareStatement("select car_id, cname, color, speed, Manufactured_Country from Car");
-        ResultSet rs = pstmt.executeQuery();
+        try {
+            connect = DataConnect.getConnection();
 
-        while (rs.next()) {
+            List<Car> cars = new ArrayList<>();
+            PreparedStatement pstmt = connect
+                    .prepareStatement("select car_id, cname, color, speed, Manufactured_Country from Car");
+            ResultSet rs = pstmt.executeQuery();
 
-            Car car = new Car();
-            car.setCid(rs.getInt("car_id"));
-            car.setCname(rs.getString("cname"));
-            car.setColor(rs.getString("color"));
-            car.setSpeed(rs.getInt("speed"));
-            car.setMfdctry(rs.getString("Manufactured_Country"));
+            while (rs.next()) {
 
-            cars.add(car);
+                Car car = new Car();
+                car.setCid(rs.getInt("car_id"));
+                car.setCname(rs.getString("cname"));
+                car.setColor(rs.getString("color"));
+                car.setSpeed(rs.getInt("speed"));
+                car.setMfdctry(rs.getString("Manufactured_Country"));
 
+                cars.add(car);
+
+            }
+
+            // close resources
+            rs.close();
+            pstmt.close();
+            connect.close();
+
+            return cars;
+        } catch (SQLException e) {
+            return null;
+        } finally {
+            DataConnect.close(connect);
         }
-
-        // close resources
-        rs.close();
-        pstmt.close();
-        connect.close();
-
-        return cars;
 
     }
 

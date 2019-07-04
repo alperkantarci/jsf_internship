@@ -44,7 +44,7 @@ public class LoginBean {
     public String doLogout() {
         HttpSession hs = Util.getSession();
         hs.invalidate();
-        return "login";
+        return "login?faces-redirect=true";
     }
 
     public String getUsername() {

@@ -6,10 +6,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="templates/template.xhtml">
-        <ui:define name="head">
-            <!--Automatic logout when session expired-->
-            <meta http-equiv="refresh" content="#{facesContext.externalContext.sessionMaxInactiveInterval};url=#{request.contextPath}/faces/login.xhtml"/>
-        </ui:define>
         <ui:define name="content">
             <b:jumbotron>
                 <h1>Home Page</h1>
