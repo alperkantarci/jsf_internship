@@ -13,5 +13,5 @@ PRIMARY KEY(uid));
 
 Step 2: Insert data into the table Users as;
 ```sql
-INSERT INTO Users VALUES(1,'adam','adam');
+INSERT INTO Users VALUES(1,'admin','admin');
 ```
